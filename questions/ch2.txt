@@ -1,0 +1,6 @@
+2. Just-in-time compilation tends to be the fastest way to implement dynamically typed languages, but not all of them use it. What reasons are there to not JIT?
+
+
+
+3. Most Lisp implementations that compile to C also contain an interpreter that
+lets them execute Lisp code on the fly as well. Why?
