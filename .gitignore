@@ -1,0 +1,5 @@
+# Java bytecode
+*.class
+
+# Answers to challenges at the end of each chapter
+questions/
