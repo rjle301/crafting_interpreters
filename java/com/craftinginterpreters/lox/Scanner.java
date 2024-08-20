@@ -81,8 +81,7 @@ public class Scanner {
                     // A comment goes until the end of the line
                     while (peek() != '\n' && !isAtEnd()) advance();
                 } else if (match('*')) {
-                    // A block comment goes until the outermost */
-                    
+                    blockComment();
                 } else {
                     addToken(SLASH);
                 }
@@ -135,7 +134,7 @@ public class Scanner {
 
     private void string() {
         while (peek() != '"' && !isAtEnd()) {
-            if (peek() == '\n');
+            if (peek() == '\n') line++;
             advance();
         }
 
@@ -150,6 +149,22 @@ public class Scanner {
         // Trim the surrounding quotes.
         String value = source.substring(start + 1, current - 1);
         addToken(STRING, value);
+    }
+
+    private void blockComment() {
+        // A block comment goes until the outermost * and /
+        while (peek() != '*' && peekNext() != '/' && !isAtEnd()) {
+            if (peek() ==  '\n') line++;
+            advance();
+        }
+
+        if (isAtEnd()) {
+            Lox.error(line, "Unterminated block comment");
+            return;
+        }
+
+        // Consume the closing */
+        advance(); advance();
     }
 
     private boolean match(char expected) {
