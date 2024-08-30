@@ -4,3 +4,4 @@
 # Answers to challenges at the end of each chapter
 questions/
 java/out.txt
+java/com/craftinginterpreters/lox/AstPrinter.java
