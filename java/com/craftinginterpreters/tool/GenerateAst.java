@@ -41,7 +41,8 @@ public class GenerateAst {
         // The base accept method that all expression classes will override
         writer.println();
         writer.println("\tabstract <R> R accept(Visitor<R> visitor);");
-
+        writer.println();
+        
         // The AST classes.
         for (String type : types) {
             String className = type.split(":")[0].trim();
